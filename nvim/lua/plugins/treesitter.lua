@@ -1,12 +1,30 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     config = function()
         require("nvim-treesitter.configs").setup({
             -- A list of parser names, or "all"
             ensure_installed = {
-                "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-                "jsdoc", "bash",
+                "vim",
+                "vimdoc",
+                "javascript",
+                "typescript",
+                "yaml",
+                "zig",
+                "markdown",
+                "markdown_inline",
+                "gitignore",
+                "dockerfile",
+                "c",
+                "lua",
+                "rust",
+                "jsdoc",
+                "bash",
+                "go",
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -18,6 +36,20 @@ return {
 
             indent = {
                 enable = true
+            },
+
+            -- With this enabled you can now use <C-space> (Ctrl + space) to select the current node in
+            -- the syntax tree your cursor is in. If you keep executing this keymap, the selection
+            -- will expand to the parent node until you have selected the whole file. You can go
+            -- backwards with <bs> (backspace).
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
+                },
             },
 
             highlight = {
@@ -35,7 +67,7 @@ return {
                         vim.notify(
                             "File larger than 100KB treesitter disabled for performance",
                             vim.log.levels.WARN,
-                            {title = "Treesitter"}
+                            { title = "Treesitter" }
                         )
                         return true
                     end
@@ -52,8 +84,8 @@ return {
         local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
         treesitter_parser_config.templ = {
             install_info = {
-                url = "https://github.com/vrischmann/tree-sitter-templ.git",
-                files = {"src/parser.c", "src/scanner.c"},
+                url = "https:--github.com/vrischmann/tree-sitter-templ.git",
+                files = { "src/parser.c", "src/scanner.c" },
                 branch = "master",
             },
         }
