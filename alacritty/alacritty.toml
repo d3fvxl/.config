@@ -4,15 +4,18 @@ TERM = "xterm-256color"
 [window]
 padding.x = 10
 padding.y = 10
-
 decorations = "Full"
-
-opacity = 0.95
+opacity = 1
 blur = true
-
 option_as_alt = "Both"
+
+[terminal.shell]
+# Set tmux as the default program to run
+program = "/opt/homebrew/bin/tmux"
+args = ["new", "-A", "-D", "-s", "main"]
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"
-
 size = 16
+offset.y = 5
+glyph_offset.y = 2
