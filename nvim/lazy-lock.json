@@ -14,7 +14,7 @@
   "nvim-cmp": { "branch": "main", "commit": "12509903a5723a876abd65953109f926f4634c30" },
   "nvim-lspconfig": { "branch": "master", "commit": "6c17f8656f667727b27f5f598463afedb7791b18" },
   "nvim-treesitter": { "branch": "master", "commit": "a840137349fcc35b5ad2c718a9b034b93012fa43" },
-  "snacks.nvim": { "branch": "main", "commit": "8c040db6005bd9c7735c06a388231b7130f26cf2" },
+  "snacks.nvim": { "branch": "main", "commit": "8edd7b4d866d77a2d7c8c7f58eacd97cb8bb1be4" },
   "vim-tmux-navigator": { "branch": "master", "commit": "d847ea942a5bb4d4fab6efebc9f30d787fd96e65" },
   "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" }
 }
