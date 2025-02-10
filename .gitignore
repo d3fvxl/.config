@@ -7,3 +7,5 @@
 # Folder to not ignore
 !/nvim/
 !/alacritty/
+!/tms/
+!/tmux/
