@@ -1,5 +1,5 @@
 # .config
 
-This is my personal configuration files for my OS X setup.
+This is my personal configuration files for OS X setup.
 
 ![terminal screenshot](./config.png)

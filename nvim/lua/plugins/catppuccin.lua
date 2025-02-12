@@ -4,5 +4,8 @@ return {
     priority = 1000,
     opts = {
         no_italic = true,
+        integrations = {
+            neotest = false,
+        },
     }
 }
