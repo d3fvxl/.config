@@ -1,5 +1,4 @@
 return {
-
     -- Neotest setup
     {
         "nvim-neotest/neotest",

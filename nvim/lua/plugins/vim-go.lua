@@ -1,9 +1,9 @@
 return {
-    -- "fatih/vim-go",
-    -- ft = { "go" },
-    -- -- install binaries
-    -- run = ":GoInstallBinaries",
-    -- keys = {
-    --
-    -- }
+    "fatih/vim-go",
+    ft = { "go" },
+    -- install binaries
+    run = ":GoInstallBinaries",
+    keys = {
+
+    }
 }
