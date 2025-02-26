@@ -29,3 +29,4 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.g.snacks_animate = false
+vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }

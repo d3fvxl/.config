@@ -91,9 +91,10 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
-                { name = 'copilot' }, -- Github Copilot
+                { name = 'copilot', group_index = 1 }, -- Github Copilot
+                { name = 'nvim_lsp', group_index = 1 },
+                { name = 'path', group_index = 1 },
+                { name = 'luasnip', group_index = 1 }, -- For luasnip users.
             }, {
                 { name = 'buffer' },
             })
