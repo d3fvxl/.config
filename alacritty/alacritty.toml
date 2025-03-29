@@ -15,7 +15,7 @@ program = "/opt/homebrew/bin/tmux"
 args = ["new", "-A", "-D", "-s", "main"]
 
 [font]
-normal.family = "JetBrainsMono Nerd Font"
-size = 14
-offset.y = 5
+normal.family = "FiraMono Nerd Font Mono"
+size = 16
+offset.y = 12
 glyph_offset.y = 2

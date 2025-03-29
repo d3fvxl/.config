@@ -1,3 +1,32 @@
+-- Icons to use in the completion menu.
+local symbol_kinds = {
+    Class = '',
+    Color = '',
+    Constant = '',
+    Constructor = '',
+    Enum = '',
+    EnumMember = '',
+    Event = '',
+    Field = '',
+    File = '',
+    Folder = '',
+    Function = '',
+    Interface = '',
+    Keyword = '',
+    Method = '',
+    Module = '',
+    Operator = '',
+    Property = '',
+    Reference = '',
+    Snippet = '',
+    Struct = '',
+    Text = '',
+    TypeParameter = '',
+    Unit = '',
+    Value = '',
+    Variable = '',
+}
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -21,6 +50,7 @@ return {
         })
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        local luasnip = require 'luasnip'
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -57,7 +87,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -76,29 +105,82 @@ return {
             }
         })
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        ---@diagnostic disable: missing-fields
+        cmp.setup {
+            -- Disable preselect. On enter, the first thing will be used if nothing
+            -- is selected.
+            preselect = cmp.PreselectMode.None,
+            -- Add icons to the completion menu.
+            formatting = {
+                format = function(_, vim_item)
+                    vim_item.kind = (symbol_kinds[vim_item.kind] or '') .. '  ' .. vim_item.kind
+                    return vim_item
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }),
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
+            window = {
+                -- Make the completion menu bordered.
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
+            view = {
+                -- Explicitly request documentation.
+                docs = { auto_open = false },
+            },
+            mapping = cmp.mapping.preset.insert {
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<CR>'] = cmp.mapping.confirm {
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                },
+                -- Explicitly request completions.
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['/'] = cmp.mapping.close(),
+                -- Overload tab to accept Copilot suggestions.
+                ['<Tab>'] = cmp.mapping(function(fallback)
+                    local copilot = require 'copilot.suggestion'
+
+                    if copilot.is_visible() then
+                        copilot.accept()
+                    elseif cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's' }),
+                ['<S-Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.expand_or_locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's' }),
+                ['<C-d>'] = function()
+                    if cmp.visible_docs() then
+                        cmp.close_docs()
+                    else
+                        cmp.open_docs()
+                    end
+                end,
+            },
             sources = cmp.config.sources({
-                { name = 'copilot', group_index = 1 }, -- Github Copilot
-                { name = 'nvim_lsp', group_index = 1 },
-                { name = 'path', group_index = 1 },
-                { name = 'luasnip', group_index = 1 }, -- For luasnip users.
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+                { name = 'crates' },
             }, {
                 { name = 'buffer' },
-            })
-        })
+            }),
+        }
+        ---@diagnostic enable: missing-fields
 
         vim.diagnostic.config({
             -- update_in_insert = true,

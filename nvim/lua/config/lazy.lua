@@ -28,4 +28,4 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "catppuccin-macchiato"
+vim.cmd.colorscheme "darcula-dark"
