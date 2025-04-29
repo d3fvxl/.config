@@ -1,0 +1,46 @@
+# $XDG_CONFIG_HOME/k9s/plugins.yaml
+plugins:
+  jqlogs:
+    shortCut: Ctrl-U
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - pod
+    command: zsh
+    background: false
+    args:
+      - -c
+      - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line'"
+  jqlogsd:
+    shortCut: Ctrl-U
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - deployment
+    command: zsh
+    background: false
+    args:
+      - -c
+      - "kubectl logs -f deployment/$NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line'"
+  jqlogss:
+    shortCut: Ctrl-U
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - service
+    command: zsh
+    background: false
+    args:
+      - -c
+      - "kubectl logs -f service/$NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line'"
+  jqlogsc:
+    shortCut: Ctrl-U
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - container
+    command: zsh
+    background: false
+    args:
+      - -c
+      - "kubectl logs -f pod/$POD -c $NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line'"

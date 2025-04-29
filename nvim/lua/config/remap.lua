@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -53,3 +52,9 @@ vim.keymap.set( "n", "<leader>rI", ":Refactor inline_func")
 
 vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
 vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
+
+vim.keymap.set("n", "<leader>tp", function()
+  local neotest = require("neotest")
+  local cwd = vim.fn.expand("%:p:h") -- get dir of current buffer
+  neotest.run.run(cwd)
+end, { desc = "Run current Go package tests" })
