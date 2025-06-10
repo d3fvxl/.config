@@ -5,5 +5,5 @@ return {
     run = ":GoInstallBinaries",
     keys = {
 
-    }
+    },
 }

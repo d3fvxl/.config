@@ -42,7 +42,17 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
+    opts = {
+        servers = {
+            gopls = {
+                settings = {
+                    gopls = {
+                        buildFlags = {"-tags=integration"},
+                    },
+                },
+            },
+        },
+    },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
@@ -65,6 +75,7 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "jedi_language_server",
+                "zk",
             },
             handlers = {
                 function(server_name) -- default handler (optional)

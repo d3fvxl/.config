@@ -1,14 +1,15 @@
 # Ignore everything in repository root 
-/*
+*
 
 # Files to not ignore
-!/.gitignore
-!/README.md
-!/config.png
+!.gitignore
+!README.md
+!config.png
 
 # Folder to not ignore
-!/nvim/
-!/alacritty/
-!/tms/
-!/tmux/
-!/k9s/
+!nvim/
+!alacritty/
+!tms/
+!tmux/
+!k9s/
+!zk/
