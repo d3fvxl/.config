@@ -1,5 +1,5 @@
 # Ignore everything in repository root 
-*
+/*
 
 # Files to not ignore
 !.gitignore
@@ -7,9 +7,10 @@
 !config.png
 
 # Folder to not ignore
-!nvim/
-!alacritty/
-!tms/
-!tmux/
-!k9s/
-!zk/
+!aerospace
+!nvim
+!alacritty
+!tms
+!tmux
+!k9s
+!zk

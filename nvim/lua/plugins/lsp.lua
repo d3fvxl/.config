@@ -153,19 +153,19 @@ return {
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['/'] = cmp.mapping.close(),
                 -- Overload tab to accept Copilot suggestions.
-                ['<Tab>'] = cmp.mapping(function(fallback)
-                    local copilot = require 'copilot.suggestion'
-
-                    if copilot.is_visible() then
-                        copilot.accept()
-                    elseif cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expand_or_locally_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end, { 'i', 's' }),
+                -- ['<Tab>'] = cmp.mapping(function(fallback)
+                --     local copilot = require 'copilot.suggestion'
+                --
+                --     if copilot.is_visible() then
+                --         copilot.accept()
+                --     elseif cmp.visible() then
+                --         cmp.select_next_item()
+                --     elseif luasnip.expand_or_locally_jumpable() then
+                --         luasnip.expand_or_jump()
+                --     else
+                --         fallback()
+                --     end
+                -- end, { 'i', 's' }),
                 ['<S-Tab>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()

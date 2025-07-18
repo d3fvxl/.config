@@ -58,3 +58,8 @@ vim.keymap.set("n", "<leader>tp", function()
   local cwd = vim.fn.expand("%:p:h") -- get dir of current buffer
   neotest.run.run(cwd)
 end, { desc = "Run current Go package tests" })
+
+vim.keymap.set("n", "<M-j>",    ":resize -2<CR>",         { desc = "Shrink window height" })
+vim.keymap.set("n", "<M-k>",  ":resize +2<CR>",         { desc = "Expand window height" })
+vim.keymap.set("n", "<M-h>",  ":vertical resize -2<CR>",{ desc = "Shrink window width" })
+vim.keymap.set("n", "<M-l>", ":vertical resize +2<CR>",{ desc = "Expand window width" })

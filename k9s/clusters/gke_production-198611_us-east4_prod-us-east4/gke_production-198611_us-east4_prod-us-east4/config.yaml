@@ -1,0 +1,12 @@
+k9s:
+  cluster: gke_production-198611_us-east4_prod-us-east4
+  namespace:
+    active: team-tech
+    lockFavorites: false
+    favorites:
+      - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  proxy: null

@@ -6,7 +6,10 @@ return {
     opts = {
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = { enabled = true },
+        explorer = {
+            enabled = true,
+            -- ignored = true,
+        },
         indent = { enabled = true },
         input = { enabled = true },
         notifier = {
@@ -16,12 +19,55 @@ return {
         picker = {
             enabled = true,
             sources = {
+                buffers = {
+                    on_show = function()
+                        vim.cmd.stopinsert()
+                    end,
+                    finder = "buffers",
+                    format = "buffer",
+                    hidden = false,
+                    unloaded = true,
+                    current = true,
+                    sort_lastused = true,
+                    win = {
+                        input = {
+                            keys = {
+                                ["d"] = "bufdelete",
+                            },
+                        },
+                        list = { keys = { ["d"] = "bufdelete" } },
+                    },
+                },
                 explorer = {
                     layout = {
                         layout = {
                             width = 60,
                         },
                     },
+                    win = {
+                        list = {
+                            keys = {
+                                ["<C-h>"] = false,
+                                ["<C-j>"] = false,
+                                ["<C-k>"] = false,
+                                ["<C-l>"] = false,
+                            },
+                        },
+                    },
+                },
+                files = {
+                    hidden = true,
+                    -- ignored = true,
+                },
+                grep = {
+                    hidden = true,
+                },
+                matcher = {
+                    frequency = true,
+                },
+                layout = {
+                    preset = "ivy",
+                    cycle = false,
                 },
             },
         },
@@ -32,7 +78,7 @@ return {
         words = { enabled = true },
         styles = {
             notification = {
-                -- wo = { wrap = true } -- Wrap notifications
+                wo = { wrap = true } -- Wrap notifications
             }
         }
     },
