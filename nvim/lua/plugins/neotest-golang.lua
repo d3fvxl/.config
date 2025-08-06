@@ -30,6 +30,7 @@ return {
                 go_test_args = {
                     "-v",
                     "-race",
+                    "-tags=integration",
                     "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
                 },
             }

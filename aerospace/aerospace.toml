@@ -55,8 +55,8 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   20
     outer.left =       20
     outer.bottom =     20
-    outer.top =        10
-    outer.right =      80
+    outer.top =        20
+    outer.right =      20
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -163,7 +163,7 @@ automatically-unhide-macos-hidden-apps = false
     # alt-shift-8 = 'move-node-to-workspace 8'
     # alt-shift-9 = 'move-node-to-workspace 9'
     # alt-shift-a = 'move-node-to-workspace A'
-    alt-shift-b = 'move-node-to-workspace B --focus-follows-window'
+    alt-shift-b = 'move-node-to-workspace B'
     # alt-shift-c = 'move-node-to-workspace C'
     # alt-shift-d = 'move-node-to-workspace D'
     # alt-shift-e = 'move-node-to-workspace E'
