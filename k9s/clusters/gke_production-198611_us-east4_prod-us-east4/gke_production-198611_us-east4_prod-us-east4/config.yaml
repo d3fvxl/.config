@@ -1,12 +1,14 @@
 k9s:
   cluster: gke_production-198611_us-east4_prod-us-east4
   namespace:
-    active: team-tech
+    active: all
     lockFavorites: false
     favorites:
+      - all
+      - batman-controller-system
       - default
   view:
-    active: po
+    active: v1/pods
   featureGates:
     nodeShell: false
   proxy: null

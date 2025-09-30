@@ -1,0 +1,12 @@
+k9s:
+  cluster: gke_efg-infra-dev_europe-west2_infra-dev-europe-west2
+  namespace:
+    active: default
+    lockFavorites: false
+    favorites:
+      - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  proxy: null

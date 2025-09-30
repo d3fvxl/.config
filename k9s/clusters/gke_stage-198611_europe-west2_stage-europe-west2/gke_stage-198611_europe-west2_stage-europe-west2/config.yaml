@@ -1,0 +1,14 @@
+k9s:
+  cluster: gke_stage-198611_europe-west2_stage-europe-west2
+  namespace:
+    active: team-tech
+    lockFavorites: false
+    favorites:
+      - team-tech
+      - team-frontend
+      - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  proxy: null
