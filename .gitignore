@@ -8,10 +8,12 @@
 
 # Folder to not ignore
 !aerospace
-!nvim
 !alacritty
+!git
+!nvim
 !tms
 !tmux
 !k9s
 !zed
 !zk
+!zsh
