@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
  alias kubeprod="gcloud container clusters get-credentials prod-us-east4 --region us-east4 --project production-198611"
  alias kubeinfra="gcloud container clusters get-credentials prod-infra-us-east4 --region us-east4 --project production-198611"
  alias kubeinfradev="gcloud container clusters get-credentials infra-dev-europe-west2 --region europe-west2 --project efg-infra-dev"
@@ -48,8 +52,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 zstyle ':omz:update' frequency 13
 zstyle :omz:plugins:iterm2 shell-integration yes
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 clog() {
@@ -72,3 +74,16 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(zoxide init zsh)"
 alias cd="z"
+
+# The next line updates PATH for CLI.
+if [ -f '/Users/defval/yandex-cloud/path.bash.inc' ]; then source '/Users/defval/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/defval/yandex-cloud/completion.zsh.inc' ]; then source '/Users/defval/yandex-cloud/completion.zsh.inc'; fi
+
+export PATH="$HOME/yandex-cloud/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

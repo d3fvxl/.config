@@ -192,6 +192,7 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
+    alt-shift-r = 'mode resize'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -212,3 +213,28 @@ automatically-unhide-macos-hidden-apps = false
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+# 'resize' binding mode declaration
+# Hyprland-style resize mode - enter with Alt+Shift+R
+[mode.resize.binding]
+    # Resize with hjkl
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+
+    # Resize with arrows
+    left = 'resize width -50'
+    down = 'resize height +50'
+    up = 'resize height -50'
+    right = 'resize width +50'
+
+    # Larger adjustments with shift
+    shift-h = 'resize width -100'
+    shift-j = 'resize height +100'
+    shift-k = 'resize height -100'
+    shift-l = 'resize width +100'
+
+    # Exit resize mode
+    enter = 'mode main'
+    esc = 'mode main'

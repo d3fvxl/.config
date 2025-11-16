@@ -7,6 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+    "agent_servers": {
+    },
     "edit_predictions": {
         "disabled_globs": [
             "**/.git",
@@ -43,12 +45,12 @@
     },
 
     "agent": {
-        "default_profile": "write",
-        "default_model": {
-            "provider": "copilot_chat",
-            "model": "claude-sonnet-4"
-        }
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
     },
+    "model_parameters": []
+  },
     "show_edit_predictions": true,
     "languages": {
         "Python": {
@@ -265,7 +267,7 @@
     "buffer_font_family": "BlexMono Nerd Font Mono",
     "ui_font_family": "BlexMono Nerd Font Mono",
     "autosave": "on_focus_change",
-    "theme": { "mode": "dark", "dark": "New Darcula", "light": "One Light" },
+    "theme": "New Darcula",
     "search": {
         "whole_word": false,
         "case_sensitive": true,
